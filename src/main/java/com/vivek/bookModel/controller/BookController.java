@@ -1,6 +1,6 @@
 package com.vivek.bookModel.controller;
 
-import com.vivek.bookModel.Book;
+import com.vivek.bookModel.model.Book;
 import com.vivek.bookModel.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

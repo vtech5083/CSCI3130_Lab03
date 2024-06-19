@@ -1,8 +1,6 @@
 package com.vivek.bookModel.services.implementation;
 
-
-
-import com.vivek.bookModel.Book;
+import com.vivek.bookModel.model.Book;
 import com.vivek.bookModel.Repository.BookRepository;
 import com.vivek.bookModel.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +42,17 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Book> getBookByTitle(String title) {
+        return bookRepository.findByTitle(title);
+    }
+
+    @Override
+    public Book updateBookAuthor(Long id, String author) {
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        book.setAuthor(author);
+        return bookRepository.save(book);
     }
 }
